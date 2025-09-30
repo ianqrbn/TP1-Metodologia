@@ -2,7 +2,6 @@ import time
 
 # --- Função de Medição e Execução ---
 def medir_performance(algoritmo, arr):
-    """Executa o algoritmo, mede o tempo, comparações e trocas."""
     arr_copy = arr[:] 
 
     comparacoes = 0
@@ -19,7 +18,6 @@ def medir_performance(algoritmo, arr):
 
 # --- 1. Cocktail Sort ---
 def cocktail_sort(arr):
-    """Implementação do Cocktail Sort, contando comparações e trocas."""
     n = len(arr)
     swapped = True
     start = 0
@@ -31,7 +29,7 @@ def cocktail_sort(arr):
     while swapped:
         swapped = False
         
-        # 1. Varredura da esquerda para a direita (Bubble Sort padrão)
+        # Varredura da esquerda para a direita
         for i in range(start, end):
             comparacoes += 1
             if arr[i] > arr[i + 1]:
@@ -39,14 +37,13 @@ def cocktail_sort(arr):
                 trocas += 1
                 swapped = True
         
-        # Se nenhuma troca ocorreu, a lista está ordenada
         if not swapped:
             break
         
         swapped = False
         end = end - 1
         
-        # 2. Varredura da direita para a esquerda (Melhoria)
+        # Varredura da direita para a esquerda 
         for i in range(end - 1, start - 1, -1):
             comparacoes += 1
             if arr[i] > arr[i + 1]:
@@ -60,7 +57,6 @@ def cocktail_sort(arr):
 
 # --- 2. Bubble Sort ---
 def bubble_sort(arr):
-    """Implementação do Bubble Sort, contando comparações e trocas."""
     n = len(arr)
     comparacoes = 0
     trocas = 0
@@ -80,7 +76,6 @@ def bubble_sort(arr):
 
 # --- 3. Selection Sort ---
 def selection_sort(arr):
-    """Implementação do Selection Sort, contando comparações e trocas."""
     n = len(arr)
     comparacoes = 0
     trocas = 0
@@ -100,7 +95,6 @@ def selection_sort(arr):
 
 # --- 4. Insertion Sort ---
 def insertion_sort(arr):
-    """Implementação do Insertion Sort, contando comparações e trocas."""
     n = len(arr)
     comparacoes = 0
     trocas = 0

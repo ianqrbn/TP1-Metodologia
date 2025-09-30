@@ -10,7 +10,6 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from algoritmos import medir_performance, cocktail_sort, selection_sort, bubble_sort, insertion_sort
 
-# --- Configurações do Experimento ---
 REPETICOES = 10 
 ALGORITMOS = {
     "Cocktail Sort (Proposto)": cocktail_sort,
