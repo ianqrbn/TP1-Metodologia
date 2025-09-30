@@ -17,7 +17,7 @@ def medir_performance(algoritmo, arr):
     
     return tempo, comparacoes, trocas
 
-# --- 1. Cocktail Sort (Seu Algoritmo) ---
+# --- 1. Cocktail Sort ---
 def cocktail_sort(arr):
     """Implementação do Cocktail Sort, contando comparações e trocas."""
     n = len(arr)
@@ -58,7 +58,7 @@ def cocktail_sort(arr):
         
     return arr, comparacoes, trocas
 
-# --- 2. Bubble Sort (Baseline) ---
+# --- 2. Bubble Sort ---
 def bubble_sort(arr):
     """Implementação do Bubble Sort, contando comparações e trocas."""
     n = len(arr)
@@ -78,7 +78,7 @@ def bubble_sort(arr):
             
     return arr, comparacoes, trocas
 
-# --- 3. Selection Sort (Baseline) ---
+# --- 3. Selection Sort ---
 def selection_sort(arr):
     """Implementação do Selection Sort, contando comparações e trocas."""
     n = len(arr)
@@ -98,7 +98,7 @@ def selection_sort(arr):
             
     return arr, comparacoes, trocas
 
-# --- 4. Insertion Sort (Baseline) ---
+# --- 4. Insertion Sort ---
 def insertion_sort(arr):
     """Implementação do Insertion Sort, contando comparações e trocas."""
     n = len(arr)

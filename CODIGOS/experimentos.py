@@ -11,7 +11,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from algoritmos import medir_performance, cocktail_sort, selection_sort, bubble_sort, insertion_sort
 
 # --- Configurações do Experimento ---
-REPETICOES = 10 # Número de vezes para repetir cada teste e tirar a média
+REPETICOES = 10 
 ALGORITMOS = {
     "Cocktail Sort (Proposto)": cocktail_sort,
     "Insertion Sort": insertion_sort,
@@ -23,13 +23,11 @@ PASTA_RESULTADOS = "RESULTADOS"
 OUTPUT_FILE = f"{PASTA_RESULTADOS}/resultados_experimentais.csv"
 
 def criar_pastas():
-    """Cria a pasta 'RESULTADOS' se ela não existir."""
     if not os.path.exists(PASTA_RESULTADOS):
         os.makedirs(PASTA_RESULTADOS)
         print(f"Pasta '{PASTA_RESULTADOS}/' criada.")
 
 def carregar_dados():
-    """Carrega todos os arquivos .json da pasta 'DADOS'."""
     entradas = {}
     caminhos = glob.glob(f"{PASTA_DADOS}/*.json")
     
@@ -64,7 +62,6 @@ def rodar_experimento():
     
     print("\nIniciando Experimento de Análise de Algoritmos...")
 
-    # Ordena as chaves para garantir que os resultados apareçam em ordem crescente de tamanho
     chaves_ordenadas = sorted(entradas.keys()) 
 
     for (tamanho, cenario) in chaves_ordenadas:
