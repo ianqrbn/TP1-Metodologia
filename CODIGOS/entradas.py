@@ -3,7 +3,7 @@ import json
 import os
 
 # --- Configurações de Geração ---
-TAMANHOS = [100, 500, 1000, 5000, 10000, 20000] # Adicione tamanhos maiores aqui, se necessário (ex: 50000)
+TAMANHOS = [100, 500, 1000, 5000, 10000, 20000]
 CENARIOS = ["aleatorio", "ordenado", "reverso"]
 PASTA_DADOS = "DADOS"
 
@@ -15,14 +15,13 @@ def criar_pastas():
 
 def gerar_lista(tamanho, cenario):
     """Gera uma lista com base no tamanho e cenário."""
-    # Lista base de números aleatórios
     lista = [random.randint(1, 1000000) for _ in range(tamanho)]
     
     if cenario == "ordenado":
         return sorted(lista)
     elif cenario == "reverso":
         return sorted(lista, reverse=True)
-    else: # "aleatorio"
+    else: 
         return lista
 
 def salvar_entrada(lista, tamanho, cenario):

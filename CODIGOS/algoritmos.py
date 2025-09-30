@@ -3,15 +3,13 @@ import time
 # --- Função de Medição e Execução ---
 def medir_performance(algoritmo, arr):
     """Executa o algoritmo, mede o tempo, comparações e trocas."""
-    arr_copy = arr[:] # Cópia para não alterar o original
-    
-    # Inicializa métricas
+    arr_copy = arr[:] 
+
     comparacoes = 0
     trocas = 0
     
     start_time = time.perf_counter()
     
-    # Executa o algoritmo, que retorna a lista ordenada e as métricas
     lista_ordenada, comparacoes, trocas = algoritmo(arr_copy)
     
     end_time = time.perf_counter()
@@ -48,7 +46,7 @@ def cocktail_sort(arr):
         swapped = False
         end = end - 1
         
-        # 2. Varredura da direita para a esquerda (Shaker)
+        # 2. Varredura da direita para a esquerda (Melhoria)
         for i in range(end - 1, start - 1, -1):
             comparacoes += 1
             if arr[i] > arr[i + 1]:
@@ -94,10 +92,9 @@ def selection_sort(arr):
             if arr[j] < arr[min_idx]:
                 min_idx = j
         
-        # Realiza a troca (swap) fora do loop interno
         if min_idx != i:
             arr[i], arr[min_idx] = arr[min_idx], arr[i]
-            trocas += 1 # Conta apenas a troca final
+            trocas += 1 
             
     return arr, comparacoes, trocas
 
@@ -113,20 +110,14 @@ def insertion_sort(arr):
         j = i - 1
         
         while j >= 0:
-            comparacoes += 1 # Comparação dentro do while
+            comparacoes += 1 
             if key < arr[j]:
                 arr[j + 1] = arr[j]
                 trocas += 1
                 j -= 1
             else:
-                break # Sai assim que encontra a posição correta
+                break 
         
         arr[j + 1] = key
         
     return arr, comparacoes, trocas
-
-if __name__ == '__main__':
-    # Exemplo rápido de teste
-    lista = [5, 1, 4, 2, 8]
-    t, c, s = medir_performance(cocktail_sort, lista)
-    print(f"Cocktail Sort - Tempo: {t:.6f}s, Comparações: {c}, Trocas: {s}")

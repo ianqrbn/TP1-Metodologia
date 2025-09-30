@@ -5,8 +5,7 @@ import csv
 import sys
 import glob
 
-# Adiciona o diretório atual ao path para importar algoritmos.py
-# Assume que este script e 'algoritmos.py' estão na mesma pasta 'codigo'
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from algoritmos import medir_performance, cocktail_sort, selection_sort, bubble_sort, insertion_sort
@@ -36,7 +35,6 @@ def carregar_dados():
     
     for caminho in caminhos:
         try:
-            # Extrai o cenario e o tamanho do nome do arquivo (ex: 'DADOS/aleatorio_N5000.json')
             nome_arquivo = os.path.basename(caminho).replace('.json', '')
             partes = nome_arquivo.split('_N')
             cenario = partes[0]
@@ -44,7 +42,6 @@ def carregar_dados():
             
             with open(caminho, 'r') as f:
                 lista = json.load(f)
-                # Armazena a lista com uma chave composta
                 entradas[(tamanho, cenario)] = lista
                 
         except Exception as e:
@@ -60,7 +57,6 @@ def rodar_experimento():
         print("ERRO: Nenhuma lista de entrada encontrada. Execute 01_gerar_entradas.py primeiro.")
         return
     
-    # Inicializa o arquivo CSV de resultados
     with open(OUTPUT_FILE, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(["Algoritmo", "Tamanho", "Cenario", 
@@ -78,20 +74,16 @@ def rodar_experimento():
         for nome_algoritmo, func_algoritmo in ALGORITMOS.items():
             tempos, comparacoes, trocas = [], [], []
             
-            # Repete o teste várias vezes
             for rep in range(REPETICOES):
-                # Importante: medir_performance recebe uma CÓPIA da lista para não contaminar o teste seguinte.
                 t, c, s = medir_performance(func_algoritmo, lista_base) 
                 tempos.append(t)
                 comparacoes.append(c)
                 trocas.append(s)
             
-            # Calcula a média dos resultados
             tempo_medio = sum(tempos) / REPETICOES
             comp_media = sum(comparacoes) / REPETICOES
             trocas_media = sum(trocas) / REPETICOES
             
-            # Salva o resultado no CSV
             with open(OUTPUT_FILE, 'a', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerow([nome_algoritmo, tamanho, cenario, 
